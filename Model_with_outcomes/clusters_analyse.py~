@@ -1,0 +1,15 @@
+from __future__ import division
+import pandas
+import numpy
+df=pandas.read_csv("cluster_assg.csv")
+df.set_index("Index",inplace=True)
+
+print df.columns
+
+#Difference between hcpc and kamila
+total_pat=911
+a=numpy.sum(df["hc_pc clust"]==df["Kamila"])
+
+print (a/total_pat)*100
+
+print("Choose the kamila, since they match with hcpc")
