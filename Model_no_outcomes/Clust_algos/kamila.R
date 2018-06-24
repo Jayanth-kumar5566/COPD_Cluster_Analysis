@@ -19,13 +19,16 @@ categ[] <- lapply(categ, factor)
 #categDum <- dummyCodeFactorDf(categ)
 
 
-kamRes <- kamila(as.data.frame(num),as.data.frame(categ),numClust=2:10,numInit=10,
+kamRes <- kamila(as.data.frame(num),as.data.frame(categ),numClust=2:15,numInit=15,
                  calcNumClust = 'ps',numPredStrCvRun = 10, predStrThresh = 0.7)
 summary(kamRes)
 kamRes$nClust$psValues
 
 plot(2:10, kamRes$nClust$psValues)
 lines(2:10,kamRes$nClust$psValues)
+
+#Suggets 2 clusters
+
 
 
 #Suggest 2 clusters to 3

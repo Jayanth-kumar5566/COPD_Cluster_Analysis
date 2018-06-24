@@ -1,4 +1,4 @@
-data=read.csv("dataset.csv")
+data=read.csv("Documents/MS/COPD_Cluster_Analysis/Model_no_outcomes/maan_whitney/dataset.csv")
   
 data=na.omit(data) #Add NA in the dataset for missing values(1 missing present)
 
@@ -47,3 +47,6 @@ for (i in nam[8:33])
   if (t$p.value <= 0.05){print(i)}
   }
 
+
+#------------Comparing with outcomes---------------------
+out=read.csv("Documents/MS/COPD_Cluster_Analysis/Model_no_outcomes/maan_whitney/outcomes.csv")
