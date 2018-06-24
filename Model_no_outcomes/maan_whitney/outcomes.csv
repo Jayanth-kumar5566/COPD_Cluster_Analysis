@@ -579,7 +579,7 @@ cgh45,Singapore,B,alive,0
 sgh108,Singapore,A,death,0
 p101,Malaysia,D,alive,3
 p16,Malaysia,C,alive,1
-p5,Malaysia,C,,2
+p5,Malaysia,C,NA,2
 p56,Malaysia,D,death,3
 25,HongKong,D,alive,2
 46,HongKong,B,alive,0
