@@ -1,0 +1,5 @@
+import pandas
+
+df=pandas.read_csv("loadings.csv")
+
+col=df.columns.tolist()

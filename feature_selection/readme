@@ -1,0 +1,4 @@
+loadings was created from the HCPC on the no outcomes data
+
+> write.csv(res.famd$var$contrib,"/tmp/loadings.csv")
+

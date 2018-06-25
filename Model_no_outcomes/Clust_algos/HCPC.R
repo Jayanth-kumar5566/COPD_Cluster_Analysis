@@ -12,7 +12,7 @@ data=data[-1]
 res.famd=FAMD(data,ncp=24)
 res.famd$eig
 
-res.hcpc <- HCPC(res.famd,nb.clust=3,min=1)
+res.hcpc <- HCPC(res.famd,nb.clust=-1,min=1,method="ward")
 
 
 #HCPC outputs 10 clusters
