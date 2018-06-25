@@ -13,7 +13,7 @@ data=data[-1]
 
 
 #Splitting the data based clusters
-X=split(data,data$kamila)
+X=split(data,data$Clustmix_3)
 #X=split(data,data$clustmix)
 
 pop1=X$'1'
@@ -55,7 +55,12 @@ p2=pop2[[i]]
 
 t=wilcox.test(p1,p2,alternative = "two.sided",paired=FALSE)
 #print(c(i,t$p.value))
-if (t$p.value <= 0.05){print(i);boxplot(pop1[[i]],pop2[[i]],xlab=i)}
+if (t$p.value <= 0.05){
+  print(i)
+  png(paste("Documents/MS/COPD_Cluster_Analysis/Model_no_outcomes/maan_whitney/",i,".png",sep=''))
+  boxplot(pop1[[i]],pop2[[i]],xlab=i)
+  dev.off()
+  }
 }
 #Plots
 #hist(p1,xlim=c(10,100),col='red')
@@ -70,10 +75,12 @@ x=rbind(summary(p1),summary(p2))
 t=fisher.test(x,simulate.p.value = TRUE)
 #print(c(i,t$p.value))
 if (t$p.value <= 0.05){print(i)
+  png(paste("Documents/MS/COPD_Cluster_Analysis/Model_no_outcomes/maan_whitney/",i,".png",sep=''))
   par(mfrow=c(1,2))
   li=max(summary(pop1[[i]]),summary(pop2[[i]]))
   plot(pop1[[i]],xlab=i,ylim=c(1,li))
-  plot(pop2[[i]],xlab=i,ylim=c(1,li))}
+  plot(pop2[[i]],xlab=i,ylim=c(1,li))
+  dev.off()}
 }
 
 

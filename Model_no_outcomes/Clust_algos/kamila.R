@@ -17,7 +17,7 @@ categ=data[8:33]
 num=scale(num) #Scaling of the numeric variables
 categ[] <- lapply(categ, factor)
 #categDum <- dummyCodeFactorDf(categ)
-
+set.seed(6)
 
 kamRes <- kamila(as.data.frame(num),as.data.frame(categ),numClust=2:15,numInit=15,
                  calcNumClust = 'ps',numPredStrCvRun = 10, predStrThresh = 0.7)
