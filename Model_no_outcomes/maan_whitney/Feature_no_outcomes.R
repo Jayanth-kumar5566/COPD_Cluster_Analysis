@@ -13,7 +13,7 @@ data=data[-1]
 
 
 #Splitting the data based clusters
-X=split(data,data$Hcpc_3)
+X=split(data,data$kamila_fs)
 #X=split(data,data$clustmix)
 
 pop1=X$'1'

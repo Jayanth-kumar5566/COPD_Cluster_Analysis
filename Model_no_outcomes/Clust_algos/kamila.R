@@ -12,7 +12,7 @@ data=data[-1]
 
 #Splitting data into categorical and numerical
 num=data[1:7]
-categ=data[8:33]
+categ=data[8:23]
 
 num=scale(num) #Scaling of the numeric variables
 categ[] <- lapply(categ, factor)
@@ -27,7 +27,16 @@ kamRes$nClust$psValues
 plot(2:10, kamRes$nClust$psValues)
 lines(2:10,kamRes$nClust$psValues)
 
-#Suggets 2 clusters
+#Suggets 3 clusters
+
+#Trying Hireachial clustering on this dataset
+library(cluster)
+h=hclust(daisy(data,metric = "gower"),method="ward.D2")
+plot(h)
+
+#Suggests 3 clusters
+
+
 
 
 
