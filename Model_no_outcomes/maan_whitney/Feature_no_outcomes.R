@@ -13,7 +13,7 @@ data=data[-1]
 
 
 #Splitting the data based clusters
-X=split(data,data$kamila_fs)
+X=split(data,data$hclust_gower)
 #X=split(data,data$clustmix)
 
 pop1=X$'1'
@@ -26,10 +26,13 @@ nam=colnames(data)
 for (i in nam[1:7])
 {p1=pop1[[i]]
  p2=pop2[[i]]
+ p3=pop3[[i]]
 
- t=wilcox.test(p1,p2,alternative = "two.sided",paired=FALSE)
+ t=kruskal.test(list(p1,p2,p3))
  #print(c(i,t$p.value))
- if (t$p.value <= 0.05){print(i)}
+ if (t$p.value <= 0.05){print(i)
+   boxplot(pop1[[i]],pop2[[i]],pop3[[i]],xlab=i)
+   }
 }
 #Plots
 #hist(p1,xlim=c(10,100),col='red')
@@ -37,14 +40,21 @@ for (i in nam[1:7])
 
 
 #rununing the test for categorical----------------
-for (i in nam[8:33])
+for (i in nam[8:23])
   {p1=pop1[[i]]
    p2=pop2[[i]]
-  x=rbind(summary(p1),summary(p2))
+   p3=pop3[[i]]
+  x=rbind(summary(p1),summary(p2),summary(p3))
   #t=chisq.test(x,simulate.p.value = TRUE)
   t=fisher.test(x,simulate.p.value = TRUE)
   #print(c(i,t$p.value))
-  if (t$p.value <= 0.05){print(i)}
+  if (t$p.value <= 0.05){print(i)
+    par(mfrow=c(1,3))
+    li=max(x)
+    plot(pop1[[i]],xlab=i,ylim=c(1,li))
+    plot(pop2[[i]],xlab=i,ylim=c(1,li))
+    plot(pop3[[i]],xlab=i,ylim=c(1,li))
+    }
   }
 
 
