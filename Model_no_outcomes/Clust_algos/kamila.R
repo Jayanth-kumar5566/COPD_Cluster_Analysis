@@ -14,12 +14,19 @@ data=data[-1]
 num=data[1:7]
 categ=data[8:33]
 
+num=data[1:8]    #with outcomes
+categ=data[9:37]
+
+
+
+
 num=scale(num) #Scaling of the numeric variables
 categ[] <- lapply(categ, factor)
 #categDum <- dummyCodeFactorDf(categ)
+
 set.seed(6)
 
-kamRes <- kamila(as.data.frame(num),as.data.frame(categ),numClust=2:15,numInit=15,
+kamRes <- kamila(as.data.frame(num),as.data.frame(categ),numClust=2:5,numInit=10,
                  calcNumClust = 'ps',numPredStrCvRun = 10, predStrThresh = 0.7)
 summary(kamRes)
 kamRes$nClust$psValues

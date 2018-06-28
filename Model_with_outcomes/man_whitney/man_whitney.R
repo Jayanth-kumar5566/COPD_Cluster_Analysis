@@ -8,13 +8,13 @@ data=data[-1]
 sel_col=c()
 
 #Splitting the data based clusters
-X=split(data,data$clusters)
+X=split(data,data$x)
 pop1=X$'1'
 pop2=X$'2'
 
 nam=colnames(data)
 
-count=0
+count=1
 #-----------Runnning the test for numerical------------
 for (i in nam[1:8])
 {
@@ -41,14 +41,14 @@ for (i in nam[9:37])
   if (t$p.value <= 0.005){sel_col[count]=i;print(i);count=count+1}
   }
 
-for (i in sel_col[1:7]){
+for (i in sel_col[1:8]){
    png(paste("Documents/MS/COPD_Cluster_Analysis/Model_with_outcomes/man_whitney/",i,".png",sep='')) 
    boxplot(pop1[[i]],pop2[[i]],xlab=i)
    dev.off()
 }
 
 
-for (i in sel_col[8:19]){
+for (i in sel_col[9:20]){
   png(paste("Documents/MS/COPD_Cluster_Analysis/Model_with_outcomes/man_whitney/",i,".png",sep='')) 
   par(mfrow=c(1,2))
   li=max(summary(pop1[[i]]),summary(pop2[[i]]))
