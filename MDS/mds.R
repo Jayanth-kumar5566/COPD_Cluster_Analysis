@@ -15,7 +15,24 @@ val=c(val,i$stress)
 plot(2:15,val)
 lines(2:15,val)
 
-
-plot(i$points)
+i=sammon(dis,k=8) #6 or 8 to figure out
 
 #Gower dissimilarity is not a metric so cannot use classical metric MDS
+
+
+#How to choose the elbow.
+#Cattell suggests to find the place where the 
+#smooth decrease of stress values (eigenvalues in factor analysis)
+#appears to level off to the right of the plot. To the right of this point
+#,you find, presumably, only "factorial scree" - "scree" is the geological 
+#term referring to the debris which collects on the lower part of a rocky slope.
+
+
+
+#=======================Clustering==================
+d_c=i$points
+#=======Using hclust======
+p=hclust(dist(d_c),method = "ward.D2")
+plot(p)
+b=cutree(p,k=5)
+write.csv(b,"clusters.csv")
