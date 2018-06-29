@@ -42,4 +42,4 @@ arrows(1:10, d_mea-sqrt(d_var), 1:10,d_mea+sqrt(d_var), length=0.05, angle=90, c
 dev.off()
 
 
-#Two clusters(with mean over 8 iterations, with error bars see plot)
+# The plot is not interpretable, since we could not find the elbow
