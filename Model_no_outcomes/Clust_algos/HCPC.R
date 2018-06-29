@@ -9,7 +9,7 @@ rownames(data)=data$id
 data=data[-1]
 
 #FAMD
-res.famd=FAMD(data,ncp=24)
+res.famd=FAMD(data,ncp=23)
 res.famd$eig
 
 res.hcpc <- HCPC(res.famd,nb.clust=-1,min=1,method="ward")
