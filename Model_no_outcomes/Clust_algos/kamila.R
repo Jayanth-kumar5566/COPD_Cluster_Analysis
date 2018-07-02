@@ -12,15 +12,29 @@ categ[] <- lapply(categ, factor)
 
 #set.seed(6)
 
-a=0
+a=c()
 for (i in 1:100){
+set.seed(round(i^log(i)))
 kamRes <- kamila(as.data.frame(num),as.data.frame(categ),numClust=2:10,numInit=10,
                  calcNumClust = 'ps',numPredStrCvRun = 10, predStrThresh = 0.7)
 b=kamRes$nClust$psValues
-a=a+b
+a=rbind(a,b)
 }
 
-print(a/100)
+#--------------Mean and std------------------------
+sink("results.txt")
+for (i in 1:9){
+  print(i)
+  m=mean(a[,i])
+  s=sqrt(var(a[,i]))
+  print(m)
+  print(s)
+  shapiro.test(a[,i])
+}
+sink()
+
+write.csv(a,"values.csv")
+
 
 #Averaged over 100 iterations
 

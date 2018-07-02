@@ -1,4 +1,4 @@
-data=read.csv("new copd data exclude outcome.csv")
+data=read.csv("./Documents/MS/COPD_Cluster_Analysis/correlation_check/new copd data exclude outcome.csv")
 rownames(data)=data$id
 data=data[-1]
 library(corrplot)
