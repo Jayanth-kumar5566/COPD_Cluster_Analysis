@@ -12,7 +12,7 @@ i=sammon(dis,k=j)
 val=c(val,i$stress)
 }
 
-plot(2:15,val)
+plot(2:15,val,xlab="dimensions",ylab="stress")
 lines(2:15,val)
 
 i=sammon(dis,k=8) #6 or 8 to figure out

@@ -14,7 +14,7 @@ categ[] <- lapply(categ, factor)
 
 a=c()
 for (i in 1:100){
-set.seed(round(i^log(i)))
+set.seed(runif(1,0,.Machine$integer.max))
 kamRes <- kamila(as.data.frame(num),as.data.frame(categ),numClust=2:10,numInit=10,
                  calcNumClust = 'ps',numPredStrCvRun = 10, predStrThresh = 0.7)
 b=kamRes$nClust$psValues
@@ -29,7 +29,7 @@ for (i in 1:9){
   s=sqrt(var(a[,i]))
   print(m)
   print(s)
-  shapiro.test(a[,i])
+  #shapiro.test(a[,i])
 }
 sink()
 
