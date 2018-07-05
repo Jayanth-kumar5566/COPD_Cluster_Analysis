@@ -36,3 +36,13 @@ p=hclust(dist(d_c),method = "ward.D2")
 plot(p)
 b=cutree(p,k=5)
 write.csv(b,"clusters.csv")
+#=================Calculating the derivative===============
+x=2:15
+
+for(i in 1:14){
+  print(x[i])
+  s=(val[i+1]-val[i])/(x[i+1]-x[i])
+  print(s)
+}
+
+#We can see that point 8 has the lowest slope value =-0.001164825. So we choose k=8
