@@ -1,0 +1,2 @@
+file=open("post_hoc.txt")
+l=file.readlines()

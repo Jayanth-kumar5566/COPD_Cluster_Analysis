@@ -1,3 +1,4 @@
+library(dunn.test)
 data=read.csv("Documents/MS/COPD_Cluster_Analysis/MDS/Feature_selection/dataset.csv")
   
 data=na.omit(data) #Add NA in the dataset for missing values(1 missing present)
@@ -15,7 +16,7 @@ pop5=X$'5'
 
 nam=colnames(data)
 
-
+sink("Documents/MS/COPD_Cluster_Analysis/MDS/Feature_selection/post_hoc.txt")
 #--------------For 3 Clusters Outcome Comparision-----------------------
 
 #Numerical
@@ -29,9 +30,10 @@ p5=pop5[[i]]
 t=kruskal.test(list(p1,p2,p3,p4,p5))
 if (t$p.value <= 0.05){
   print(i)
-  png(paste("./Documents/MS/COPD_Cluster_Analysis/MDS/Feature_selection/",i,".png",sep=''))
-  boxplot(p1,p2,p3,p4,p5,xlab=i)
-  dev.off()
+  d=dunn.test(x=list(p1,p2,p3,p4,p5),method = 'bh',alpha=0.05,kw=FALSE,list = TRUE,table = FALSE,altp = TRUE)
+  #png(paste("./Documents/MS/COPD_Cluster_Analysis/MDS/Feature_selection/",i,".png",sep=''))
+  #boxplot(p1,p2,p3,p4,p5,xlab=i)
+  #dev.off()
 }
 }
 
@@ -45,17 +47,18 @@ p5=pop5[[i]]
 x=rbind(summary(p1),summary(p2),summary(p3),summary(p4),summary(p5))
 t=fisher.test(x,simulate.p.value = TRUE)
 if (t$p.value <= 0.05){print(i)
-  png(paste("./Documents/MS/COPD_Cluster_Analysis/MDS/Feature_selection/",i,".png",sep=''))
-  par(mfrow=c(1,5))
-  li=max(x)
-  plot(p1,xlab=i,ylim=c(1,li))
-  plot(p2,xlab=i,ylim=c(1,li))
-  plot(p3,xlab=i,ylim=c(1,li))
-  plot(p4,xlab=i,ylim=c(1,li))
-  plot(p5,xlab=i,ylim=c(1,li))
-  dev.off()}
+  d=dunn.test(x=list(p1,p2,p3,p4,p5),method = 'bh',alpha=0.05,kw=FALSE,list = TRUE,table = FALSE,altp = TRUE)
+  #png(paste("./Documents/MS/COPD_Cluster_Analysis/MDS/Feature_selection/",i,".png",sep=''))
+   # par(mfrow=c(1,5))
+   # li=max(x)
+   # plot(p1,xlab=i,ylim=c(1,li))
+   # plot(p2,xlab=i,ylim=c(1,li))
+   # plot(p3,xlab=i,ylim=c(1,li))
+   # plot(p4,xlab=i,ylim=c(1,li))
+   # plot(p5,xlab=i,ylim=c(1,li))
+  #dev.off()
 }
-
+}
 
 #-----------------Cluster Characterization on 3-------------------
 
@@ -69,9 +72,10 @@ p5=pop5[[i]]
 t=kruskal.test(list(p1,p2,p3,p4,p5))
 if (t$p.value <= 0.05){
   print(i)
-  png(paste("./Documents/MS/COPD_Cluster_Analysis/MDS/Feature_selection/",i,".png",sep=''))
-  boxplot(p1,p2,p3,p4,p5,xlab=i)
-  dev.off()
+  d=dunn.test(x=list(p1,p2,p3,p4,p5),method = 'bh',alpha=0.05,kw=FALSE,list = TRUE,table = FALSE,altp = TRUE)
+  # png(paste("./Documents/MS/COPD_Cluster_Analysis/MDS/Feature_selection/",i,".png",sep=''))
+  # boxplot(p1,p2,p3,p4,p5,xlab=i)
+  # dev.off()
 }
 }
 
@@ -85,13 +89,16 @@ p5=pop5[[i]]
 x=rbind(summary(p1),summary(p2),summary(p3),summary(p4),summary(p5))
 t=fisher.test(x,simulate.p.value = TRUE)
 if (t$p.value <= 0.05){print(i)
-  png(paste("./Documents/MS/COPD_Cluster_Analysis/MDS/Feature_selection/",i,".png",sep=''))
-  par(mfrow=c(1,5))
-  li=max(x)
-  plot(p1,xlab=i,ylim=c(1,li))
-  plot(p2,xlab=i,ylim=c(1,li))
-  plot(p3,xlab=i,ylim=c(1,li))
-  plot(p4,xlab=i,ylim=c(1,li))
-  plot(p5,xlab=i,ylim=c(1,li))
-  dev.off()}
+  d=dunn.test(x=list(p1,p2,p3,p4,p5),method = 'bh',alpha=0.05,kw=FALSE,list = TRUE,table = FALSE,altp = TRUE)
+  # png(paste("./Documents/MS/COPD_Cluster_Analysis/MDS/Feature_selection/",i,".png",sep=''))
+  # par(mfrow=c(1,5))
+  # li=max(x)
+  # plot(p1,xlab=i,ylim=c(1,li))
+  # plot(p2,xlab=i,ylim=c(1,li))
+  # plot(p3,xlab=i,ylim=c(1,li))
+  # plot(p4,xlab=i,ylim=c(1,li))
+  # plot(p5,xlab=i,ylim=c(1,li))
+  # dev.off()
+  }
 }
+sink()
