@@ -1,5 +1,5 @@
 library(cluster)
-data=read.csv("Documents/MS/COPD_Cluster_Analysis/MDS/new copd data exclude outcome.csv")
+data=read.csv("/home/jhome/Documents/MS/COPD_Cluster_Analysis/MDS/new copd data exclude outcome.csv")
 rownames(data)=data$id
 data=data[-1]
 dis=daisy(data,metric="gower")
